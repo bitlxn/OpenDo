@@ -1,109 +1,52 @@
-*Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing.*
-
-*Looking for a shareable component template instead? You can [use SvelteKit for that as well](https://kit.svelte.dev/docs#packaging) or the older [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# OpenDo
+A fully open source, modular, customizable and private todo list app. You decide what you want public, you decide how you want to store your tasks. We belive you should decide what you want.
 
 ---
 
-# svelte app
+# Installing
+This app will be able to be installed on your computer soon, but for now you can download the source code and run it from your terminal with commands showcased in the **Commands** section. You can also run the app from your browser by going to any of the available websites that host this version of the app or a fork of it. You can find those links in the **Special Links** section. 
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+---
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+# Dependencies
+This app is built with SvelteJs and to use it you will need to download NodeJs and npm, but npm comes with NodeJs. You can find the latest version of NodeJs from the offical site here: https://nodejs.org/en/download/
 
+---
+
+# For Developers
+This app is built with normal SvelteJs not SvelteKit and does not have server side rendering. It is built with normal css no css libary and does not have any css preprocessor, like for example sass with scss.
+
+---
+
+# For Designers
+This app is bult for designers, developers or game creators who want a todo list app that is easy to use and easy to customize. So most of us are games and thats why we have chosen the default theme of this app to be dark. We will make it so you can create your own theme and choose it from the settings page in the app. If you want to change the look and feel of the app you can contribute to the css in the .svelte files. We will also make it so you can create your own icons and choose them from the settings page in the app.
+
+---
+
+# Commands
+To clone the app you can use the following command:
 ```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+git clone https://github.com/bietlxn/OpenDo.git
 ```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
+After cloning the app you can go to the directory of the app with the following command:
 ```bash
-cd svelte-app
-npm install
+cd OpenDo
 ```
-
-...then start [Rollup](https://rollupjs.org):
-
+To run the app you can use the following command:
 ```bash
 npm run dev
 ```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
+To build the app you can use the following command:
 ```bash
 npm run build
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+---
 
+# Special Links
+This app is hosted on github, so you can find the source code and the latest version of the app on github. You can also find the latest version of the app on the offical website here: https://opendo.bietlxn.com/
 
-## Single-page app mode
+**Note:** If you are not using the app on the offical website we do not have have any way to help you with the app. We are not responsible for any bugs or issues that may occur when using the app on an unofficial website. We are not responsible for anything happening to your computer or your data, when you download something from an unofficial website(we recommend not to download something thats not verified).
 
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+**Verified Websites**
+* [opendo.bietlxn.com](https://opendo.bietlxn.com/)
