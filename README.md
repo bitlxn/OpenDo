@@ -50,3 +50,8 @@ This app is hosted on github, so you can find the source code and the latest ver
 
 **Verified Websites**
 * [opendo.bietlxn.com](https://opendo.bietlxn.com/)
+
+---
+
+This app uses the MIT license. You can find the license here:
+https://github.com/bietlxn/OpenDo/blob/main/LICENSE
