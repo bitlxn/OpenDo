@@ -1,18 +1,20 @@
 <script>
 	console.log("hello");
 
-	let filePath = "import";
-	let fileName = "unnamed";
+	let fileName = "import";
+
+	let file = "0";
+	let reader = "0";
 
 	let canCreate = false;
 	let isInFile = false;
 
 	function browse() {
 		console.log("browse");
-		filePath = document.getElementById("fileUpload").value;
-		console.log(filePath);
+		fileName = document.getElementById("fileUpload").files[0].name; ;
+		console.log(fileName);
 		// if filePath is not empty or "Browse", then canCreate is true
-		if (filePath != "Browse" && filePath != "") {
+		if (fileName != "Browse" && fileName != "") {
 			canCreate = true;
 			document.getElementById("pleaseImport").style.display = "none";
 		}
@@ -25,6 +27,17 @@
 		console.log("openProject");
 		if (canCreate) {
 			isInFile = true;
+			var file = document.getElementById("fileUpload").files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.readAsText(file, "UTF-8");
+				reader.onload = function (evt) {
+					document.getElementById("fileContents").innerHTML = evt.target.result;
+				}
+				reader.onerror = function (evt) {
+					document.getElementById("fileContents").innerHTML = "error reading file, please retry";
+				}
+			}
 		}
 		else {
 			console.log("cannotCreate");
@@ -32,19 +45,54 @@
 			isInFile = false;
 		}
 	}
+
+	function goBack() {
+		console.log("goBack");
+		let fileName = "import";
+
+		let file = "0";
+		let reader = "0";
+
+		let canCreate = false;
+		let isInFile = false;
+
+		document.getElementById("fileContents").innerHTML = "";
+		document.getElementById("needFile").style.display = "none";
+		document.getElementById("pleaseImport").style.display = "flex";
+		isInFile = false;
+		// go to to /
+		window.location.href = "/";
+	}
 </script>
+
+<svelte:head>
+	{#if isInFile == true}
+		<title>OpenDo / {fileName}</title>
+	{:else}
+		<title>OpenDo / Import</title>
+	{/if}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-bulma@latest/dist/svelte-bulma.min.css">
+</svelte:head>
 
 <div class="App" id="App">
 	{#if isInFile == true}
 		<div class="projectFile" id="projectFile" style="text-align: center;">
-			<h1 style="color: white;">{fileName}</h1>
-			<h2 style="color: white;">{filePath}</h2>
+			<div class="header">
+				<div class="goBack" on:click={goBack}>go back</div>
+				<div class="title">{fileName}</div>
+			</div>
+			<div class="body">
+				<div id="fileContents">
+					loading...
+				</div>
+			</div>
 		</div>
 	{:else}
 		<div class="importProject" id="importProject">
 			<span class="pleaseImport" id="pleaseImport">please import a file</span>
 			<label for="fileUpload" class="customFileUpload">
-				{filePath}
+				{fileName}
 			</label>
 			<input id="fileUpload" type="file" on:change={browse}/>
 			<button class="importProjectButton" on:click={openProject}>open <span class="hideProject">project</span></button>
@@ -57,17 +105,64 @@
 <style>
 	.App {
 		background: rgb(26, 26, 26);
-		width: 100%;
+	}
+
+	.projectFile .header {
+		display: flex;
+		position: absolute;
+		width: 100vw;
+		align-items: center;
+		padding: 10px 0px;
+		background: rgb(20, 20, 20);
+		color: white;
+	}
+
+	.projectFile .header .goBack {
+		color: rgba(255, 255, 255, 0.747);
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.062);
+		border: solid 1px rgba(255, 255, 255, 0.068);
+		border-radius: 5px;
 		height: 100%;
+		padding: 10px 30px;
+		margin-left: 10px;
+	}
+
+	.projectFile .header .goBack:hover {
+		color: white;
+		background: rgba(255, 255, 255, 0.288);
+		border-color: rgba(255, 255, 255, 0.288);
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.233);
+	}
+
+	.projectFile .header .goBack:active {
+		background: rgba(255, 255, 255, 0.473);
+		border-color: rgba(255, 255, 255, 0.473);
+		box-shadow: 0 0px 0px transparent;
+	}
+
+	.projectFile .header .title {
+		color: rgba(255, 255, 255, 0.747);
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		font-weight: bold;
+		margin-left: 30px;
+	}
+
+	.projectFile .body {
+		width: 100%;
+		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		text-align: center;
 	}
 
 	.importProject {
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -142,7 +237,6 @@
 		display: none;
 		color: rgba(255, 124, 124, 0.514);
 		font-size: 16px;
-		cursor: pointer;
 	}
 
 	.importProject .pleaseImport {
