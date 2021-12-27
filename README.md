@@ -1,4 +1,5 @@
 ![banner](https://github.com/bietlxn/OpenDo/blob/main/public/gh-title.png)
+![version](https://github.com/bietlxn/OpenDo/blob/main/public/version.png)
 
 # OpenDo
 A fully open source, modular, customizable and private todo list app. You decide what you want public, you decide how you want to store your tasks. We belive you should decide what you want.
