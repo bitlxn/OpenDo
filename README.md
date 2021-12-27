@@ -1,8 +1,6 @@
 ![banner](https://github.com/bietlxn/OpenDo/blob/main/public/gh-title.png)
 ![version](https://github.com/bietlxn/OpenDo/blob/main/public/version.png)
 
-![screenshot](https://github.com/bietlxn/OpenDo/blob/main/public/ImportPageScreenshot.png)
-
 # OpenDo
 A fully open source, modular, customizable and private todo list app. You decide what you want public, you decide how you want to store your tasks. We belive you should decide what you want.
 
@@ -17,6 +15,11 @@ A fully open source, modular, customizable and private todo list app. You decide
 
 ## How it works
 You import a empty .opendo file. It reads the file and with a nice user interface you can add, edit, delete and mark tasks. You can also add a description to your tasks. The user interface is very simple and easy to use, you will be able to create and download your own themes. 
+
+---
+
+# Screenshots
+![screenshot1](https://github.com/bietlxn/OpenDo/blob/main/public/ImportPageScreenshot.png)
 
 ---
 
