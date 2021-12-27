@@ -14,7 +14,7 @@ A fully open source, modular, customizable and private todo list app. You decide
 * No data tracking
 
 ## How it works
-You import a empty .txt(more will come) file. It reads the file and with a nice user interface you can add, edit, delete and mark tasks. You can also add a description to your tasks. The user interface is very simple and easy to use, you will be able to create and download your own themes. 
+You import a empty .opendo file. It reads the file and with a nice user interface you can add, edit, delete and mark tasks. You can also add a description to your tasks. The user interface is very simple and easy to use, you will be able to create and download your own themes. 
 
 ---
 
@@ -76,6 +76,7 @@ This app is hosted on github, so you can find the source code and the latest ver
 This app is currently in beta and is not fully functional. We are working on it and will update it as soon as possible. We update the app as much as we can.
 
 current version: 0.0.1
+
 version history:
 * 0.0.1:
     * initial release of the app and the first version of the app.

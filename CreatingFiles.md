@@ -1,0 +1,2 @@
+# Creating OpenDo files
+You can create OpenDo files by creating a normal **[Name].txt** file on your computer, and then renaming it to **[Name].od** or **[Name].opendo**. When you do this, the file will be automatically converted to an OpenDo file. After that you can go to any OpenDo hosted website and import the file. 

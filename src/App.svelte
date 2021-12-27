@@ -29,7 +29,7 @@
 			var file = document.getElementById("fileUpload").files[0];
 			if (file) {
 				// if file has extension .opendo
-				if (file.name.endsWith(".opendo")) {
+				if (file.name.endsWith(".opendo") || file.name.endsWith(".od")) {
 					var reader = new FileReader();
 					reader.readAsText(file, "UTF-8");
 					isInFile = true;
@@ -41,7 +41,7 @@
 					}
 				}
 				else {
-					document.getElementById("needOpenDo").innerHTML.style.display = "flex";
+					document.getElementById("needOpenDo").style.display = "flex";
 				}
 			}
 		}
@@ -84,6 +84,10 @@
 			<div class="header">
 				<div class="goBack" on:click={goBack}>go back</div>
 				<div class="title">{fileName}</div>
+				<div class="siteInfo">
+					<div class="siteName">OPEN DO</div>
+					<img src="./favicon.png" alt="icon">
+				</div>
 			</div>
 			<div class="body">
 				<div id="fileContents" class="fileContents">
@@ -93,6 +97,12 @@
 		</div>
 	{:else}
 		<div class="importProject" id="importProject">
+			<div class="siteInfo">
+				<img src="./favicon.png" class="icon" alt="icon">
+				<span class="title">OPEN <span class="titleSpecial">DO</span></span>
+				<span class="desc">A fully open source, modular and customizable todo list app. </span>
+				<a href="https://github.com/bietlxn/OpenDo" class="githubSource">github</a>
+			</div>
 			<span class="pleaseImport" id="pleaseImport">please import a file</span>
 			<label for="fileUpload" class="customFileUpload">
 				{fileName}
@@ -100,8 +110,8 @@
 			<input id="fileUpload" type="file" on:change={browse}/>
 			<button class="importProjectButton" on:click={openProject}>open <span class="hideProject">project</span></button>
 			<span class="needFile" id="needFile">you need a file, please enter a file for your project.</span>
-			<span class="needOpenDo" id="needOpenDo">you need a file with the extension .opendo, please enter a new file for your project.</span>
-			<span class="learnMore">learn more</span>
+			<span class="needOpenDo" id="needOpenDo">you need a file with the extension .opendo or .od, please enter a new file for your project.</span>
+			<a href="https://github.com/bietlxn/OpenDo/blob/main/CreatingFiles.md" class="learnMore">learn more</a>
 		</div>
 	{/if}
 </div>
@@ -129,7 +139,7 @@
 		border-radius: 5px;
 		height: 100%;
 		padding: 10px 30px;
-		margin-left: 10px;
+		margin-left: 20px;
 	}
 
 	.projectFile .header .goBack:hover {
@@ -143,6 +153,27 @@
 		background: rgba(255, 255, 255, 0.473);
 		border-color: rgba(255, 255, 255, 0.473);
 		box-shadow: 0 0px 0px transparent;
+	}
+
+	.projectFile .header .siteInfo {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+		margin-right: 20px;
+	}
+
+	.projectFile .header .siteInfo .siteName {
+		font-weight: bolder;
+		float: right;
+		margin-right: 10px;
+		letter-spacing: 2px;
+	}
+
+	.projectFile .header .siteInfo img {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 10px;
 	}
 
 	.projectFile .fileContents {
@@ -186,11 +217,61 @@
 		text-align: center;
 	}
 
+	.importProject .siteInfo {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-bottom: 10px;
+		padding: 15px;
+		border-bottom: solid 1px rgba(255, 255, 255, 0.068);
+	}
+
+	.importProject .siteInfo .icon {
+		width: 100px;
+		height: 100px;
+		border-bottom: solid 1px rgba(255, 255, 255, 0.068);
+	}
+
+	.importProject .title {
+		font-size: 40px;
+		letter-spacing: 6px;
+		font-weight: bold;
+		color: rgb(255, 255, 255);
+	}
+
+	.importProject .titleSpecial {
+		background: linear-gradient(90deg, rgb(46, 189, 255) 0%,rgb(255, 31, 240)100%);
+		background-clip: text;
+		color: transparent;
+	}
+
+	.importProject .desc {
+		font-size: 20px;
+		letter-spacing: 1px;
+		color: rgba(255, 255, 255, 0.555);
+	}
+
+	.importProject .githubSource {
+		color: rgba(255, 255, 255, 0.397);
+		text-decoration: none;
+		font-size: 17px;
+		letter-spacing: 3px;
+		margin-top: 2px;
+	}
+
+	.importProject .githubSource:hover {
+		background: linear-gradient(90deg, rgb(46, 189, 255) 0%,rgb(255, 31, 240)100%);
+		background-clip: text;
+		text-decoration: underline;
+	}
+
 	.importProject .importProjectButton {
 		text-align: center;
-		background: rgba(255, 145, 0, 0.171);
-		color: rgba(255, 255, 255, 0.466);
-		border: solid 1px rgba(255, 145, 0, 0.171);
+		background: rgba(255, 255, 255, 0.219);
+		color: rgba(255, 255, 255, 0.822);
+		border: solid 0px;
 		border-radius: 5px;
 		font-size: 20px;
 		font-family: 'Roboto', sans-serif;
@@ -200,13 +281,15 @@
 	}
 
 	.importProject .importProjectButton:hover {
-		background: rgba(255, 145, 0, 0.37);
+		background: rgb(0, 174, 255);
+		background: linear-gradient(90deg, rgb(0, 143, 209) 0%, rgb(218, 0, 203)100%);
 		color: rgb(255, 255, 255);
 		box-shadow: 0 10px 17px rgba(0, 0, 0, 0.233);
 	}
 
 	.importProject .importProjectButton:active {
-		background: rgba(255, 174, 68, 0.5);
+		background: rgb(0, 174, 255);
+		background: linear-gradient(90deg, rgb(38, 139, 185) 0%, rgb(196, 61, 187)100%);
 		color: rgb(255, 255, 255);
 		box-shadow: 0 0px 0px rgba(0, 0, 0, 0.233);
 	}
@@ -222,11 +305,11 @@
 		color: rgba(255, 255, 255, 0.37);
 		border: solid 1px rgba(255, 255, 255, 0.082);
 		border-radius: 5px;
-		font-size: 1.05vw;
+		font-size: 20px;
 		font-family: 'Roboto', sans-serif;
 		outline: none;
 		width: 15%;
-		padding: 7.5px 0px;
+		padding: 6px 0px;
 		cursor: pointer;
 		margin: 10px;
 	}
