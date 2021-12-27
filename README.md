@@ -16,7 +16,7 @@ You import a empty .txt(more will come) file. It reads the file and with a nice 
 ---
 
 # Installing
-This app will be able to be installed on your computer soon, but for now you can download the source code and run it from your terminal with commands showcased in the **Commands** section. You can also run the app from your browser by going to any of the available websites that host this version of the app or a fork of it. You can find those links in the **Special Links** section. 
+You can download the source code and run it from your terminal with commands showcased in the [**Commands**](https://github.com/bietlxn/OpenDo#commands) section. You can also run the app from your browser by going to any of the available websites that host this version of the app or a fork of it. You can find verified websites in the [**Special Links**](https://github.com/bietlxn/OpenDo#special-links) section. 
 
 ---
 
