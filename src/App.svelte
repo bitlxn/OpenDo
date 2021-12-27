@@ -26,16 +26,22 @@
 	function openProject() {
 		console.log("openProject");
 		if (canCreate) {
-			isInFile = true;
 			var file = document.getElementById("fileUpload").files[0];
 			if (file) {
-				var reader = new FileReader();
-				reader.readAsText(file, "UTF-8");
-				reader.onload = function (evt) {
-					document.getElementById("fileContents").innerHTML = evt.target.result;
+				// if file has extension .opendo
+				if (file.name.endsWith(".opendo")) {
+					var reader = new FileReader();
+					reader.readAsText(file, "UTF-8");
+					isInFile = true;
+					reader.onload = function (evt) {
+						document.getElementById("fileContents").innerHTML = evt.target.result;
+					}
+					reader.onerror = function (evt) {
+						document.getElementById("fileContents").innerHTML = "error reading file, please retry";
+					}
 				}
-				reader.onerror = function (evt) {
-					document.getElementById("fileContents").innerHTML = "error reading file, please retry";
+				else {
+					document.getElementById("needOpenDo").innerHTML.style.display = "flex";
 				}
 			}
 		}
@@ -48,20 +54,17 @@
 
 	function goBack() {
 		console.log("goBack");
-		let fileName = "import";
+		fileName = "import";
 
-		let file = "0";
-		let reader = "0";
+		file = "0";
+		reader = "0";
 
-		let canCreate = false;
-		let isInFile = false;
+		canCreate = false;
+		isInFile = false;
 
 		document.getElementById("fileContents").innerHTML = "";
 		document.getElementById("needFile").style.display = "none";
 		document.getElementById("pleaseImport").style.display = "flex";
-		isInFile = false;
-		// go to to /
-		window.location.href = "/";
 	}
 </script>
 
@@ -83,7 +86,7 @@
 				<div class="title">{fileName}</div>
 			</div>
 			<div class="body">
-				<div id="fileContents">
+				<div id="fileContents" class="fileContents">
 					loading...
 				</div>
 			</div>
@@ -96,7 +99,8 @@
 			</label>
 			<input id="fileUpload" type="file" on:change={browse}/>
 			<button class="importProjectButton" on:click={openProject}>open <span class="hideProject">project</span></button>
-			<span class="needFile" id="needFile">you need a file, please enter a file for your project. <br> if you dont know how to create a file please click "learn more".</span>
+			<span class="needFile" id="needFile">you need a file, please enter a file for your project.</span>
+			<span class="needOpenDo" id="needOpenDo">you need a file with the extension .opendo, please enter a new file for your project.</span>
 			<span class="learnMore">learn more</span>
 		</div>
 	{/if}
@@ -139,6 +143,18 @@
 		background: rgba(255, 255, 255, 0.473);
 		border-color: rgba(255, 255, 255, 0.473);
 		box-shadow: 0 0px 0px transparent;
+	}
+
+	.projectFile .fileContents {
+		color: white;
+		margin: 100px;
+		padding: 10px;
+		width: 50%;
+		background: rgba(255, 255, 255, 0.062);
+		border: solid 1px rgba(255, 255, 255, 0.068);
+		border-radius: 5px;
+		height: calc(100vh - 100px);
+		overflow-y: scroll;
 	}
 
 	.projectFile .header .title {
@@ -233,6 +249,13 @@
 	}
 
 	.importProject .needFile {
+		position: relative;
+		display: none;
+		color: rgba(255, 124, 124, 0.514);
+		font-size: 16px;
+	}
+
+	.importProject .needOpenDo {
 		position: relative;
 		display: none;
 		color: rgba(255, 124, 124, 0.514);
