@@ -1,4 +1,6 @@
 <script>
+	import Task from './Components/task.svelte';
+
 	console.log("hello");
 
 	let fileName = "import";
@@ -76,10 +78,12 @@
 	{/if}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-bulma@latest/dist/svelte-bulma.min.css">
+	<script src="https://kit.fontawesome.com/33ead998ef.js" crossorigin="anonymous"></script>
 </svelte:head>
 
 <div class="App" id="App">
 	{#if isInFile == true}
+
 		<div class="projectFile" id="projectFile" style="text-align: center;">
 			<div class="header">
 				<div class="goBack" on:click={goBack}>go back</div>
@@ -90,12 +94,28 @@
 				</div>
 			</div>
 			<div class="body">
-				<div id="fileContents" class="fileContents">
-					loading...
+				<div class="todo">
+					<div class="inputs">
+						<input type="text" class="taskInput" placeholder="task here">
+						<button class="addButton">add task</button>
+					</div>
+					<div class="tasks">
+						<div id="fileContents" class="fileContents">
+						</div>	
+						<Task taskName="Test" taskId="1"/>
+						<Task taskName="Bruh" taskId="2"/>
+						<Task taskName="Test" taskId="1"/>
+						<Task taskName="Test" taskId="1"/>
+						<Task taskName="Test" taskId="1"/>
+						<Task taskName="Test" taskId="1"/>
+						<Task taskName="Test" taskId="1"/>
+					</div>
 				</div>
 			</div>
 		</div>
+
 	{:else}
+
 		<div class="importProject" id="importProject">
 			<div class="siteInfo">
 				<img src="./favicon.png" class="icon" alt="icon">
@@ -113,6 +133,7 @@
 			<span class="needOpenDo" id="needOpenDo">you need a file with the extension .opendo or .od, please enter a new file for your project.</span>
 			<a href="https://github.com/bietlxn/OpenDo/blob/main/CreatingFiles.md" class="learnMore">learn more</a>
 		</div>
+
 	{/if}
 </div>
 
@@ -176,16 +197,54 @@
 		margin-right: 10px;
 	}
 
-	.projectFile .fileContents {
-		color: white;
-		margin: 100px;
-		padding: 10px;
-		width: 50%;
-		background: rgba(255, 255, 255, 0.062);
+	.projectFile .inputs {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 20px;
+	}
+
+	.projectFile .inputs .taskInput {
+		width: 100%;
+		outline: none;
+		height: 40px;
 		border: solid 1px rgba(255, 255, 255, 0.068);
+		background: rgba(255, 255, 255, 0.068);
 		border-radius: 5px;
-		height: calc(100vh - 100px);
-		overflow-y: scroll;
+		padding: 0px 10px;
+		font-size: 20px;
+		color: rgb(255, 255, 255);
+	}
+
+	.projectFile .inputs .taskInput:placeholder-shown {
+		color: rgba(255, 255, 255, 0.349);
+	}
+
+	.projectFile .inputs .addButton {
+		text-align: center;
+		background: rgba(255, 255, 255, 0.219);
+		color: rgba(255, 255, 255, 0.822);
+		border: solid 0px;
+		border-radius: 5px;
+		font-size: 20px;
+		font-family: 'Roboto', sans-serif;
+		outline: none;
+		width: 100%;
+		cursor: pointer;
+	}
+
+	.projectFile .inputs .addButton:hover {
+		background: rgb(0, 174, 255);
+		background: linear-gradient(90deg, rgb(0, 143, 209) 0%, rgb(218, 0, 203)100%);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 10px 17px rgba(0, 0, 0, 0.233);
+	}
+
+	.projectFile .inputs .addButton:active {
+		background: rgb(0, 143, 209);
+		background: linear-gradient(90deg, rgb(38, 139, 185) 0%, rgb(196, 61, 187)100%);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 0px 0px transparent;
 	}
 
 	.projectFile .header .title {
@@ -205,6 +264,10 @@
 		justify-content: center;
 		align-items: center;
 		text-align: center;
+	}
+
+	.projectFile .body .tasks {
+		margin-top: 15px;
 	}
 
 	.importProject {
@@ -244,6 +307,8 @@
 	.importProject .titleSpecial {
 		background: linear-gradient(90deg, rgb(46, 189, 255) 0%,rgb(255, 31, 240)100%);
 		background-clip: text;
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
 		color: transparent;
 	}
 
@@ -264,6 +329,8 @@
 	.importProject .githubSource:hover {
 		background: linear-gradient(90deg, rgb(46, 189, 255) 0%,rgb(255, 31, 240)100%);
 		background-clip: text;
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
 		text-decoration: underline;
 	}
 
